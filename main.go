@@ -4,6 +4,7 @@ import (
     "bufio"
     "fmt"
     "os"
+    "strings"
 )
 
 func checkErr(e error) {
@@ -22,5 +23,13 @@ func main() {
     for scanner.Scan() {
         tmpString = append(tmpString, scanner.Text())
     }
+    str := strings.Join(tmpString, " ")
+    //for index, line := range tmpString {
+    //    h, isHeadline := pkg.CheckHeadline(line)
+    //    if isHeadline {
+    //        // add check if this an epic
+    //    }
+    //}
+
     fmt.Println(tmpString)
 }
