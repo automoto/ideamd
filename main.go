@@ -1,10 +1,8 @@
 package main
 
 import (
-    "bufio"
+    "flag"
     "fmt"
-    "os"
-    "strings"
 )
 
 func checkErr(e error) {
@@ -14,22 +12,19 @@ func checkErr(e error) {
 }
 
 func main() {
-    mdFilePath := os.Args[1]
-    file, err := os.Open(mdFilePath)
-    checkErr(err)
-    defer file.Close()
-    scanner := bufio.NewScanner(file)
-    tmpString := []string{""}
-    for scanner.Scan() {
-        tmpString = append(tmpString, scanner.Text())
-    }
-    str := strings.Join(tmpString, " ")
-    //for index, line := range tmpString {
-    //    h, isHeadline := pkg.CheckHeadline(line)
-    //    if isHeadline {
-    //        // add check if this an epic
-    //    }
-    //}
+    var configPathFlag string
+    flag.StringVar(&configPathFlag, "c", "", "Configuration file path")
+    flag.Parse()
+    fmt.Println(configPathFlag)
 
-    fmt.Println(tmpString)
+    //mdFilePath := os.Args[1]
+    //file, err := os.Open(mdFilePath)
+    //checkErr(err)
+    //defer file.Close()
+    //scanner := bufio.NewScanner(file)
+    //tmpString := []string{""}
+    //for scanner.Scan() {
+    //    tmpString = append(tmpString, scanner.Text())
+    //}
+    //fmt.Println(tmpString)
 }
